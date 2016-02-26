@@ -13,13 +13,11 @@ using std::endl;
 
 int menu();
 
-
 void cargarContacto(vector<Contacto>);
-//void cargarContacto();
-
 int main(int argc,char*argv[]){
 	vector<Contacto> lista;
 	initscr();
+>>>>>>> ffb632fef8a5970bec306316842769047032023b
 	int opcion=menu();	
 	cargarContacto(lista);
 	
@@ -29,7 +27,7 @@ int main(int argc,char*argv[]){
 }
 
 
-void cargarContacto(vector lista){
+void cargarContacto(vector<Contacto> lista){
 	char nombres[10];
 	char numero[10];
 	bool bandera=false;
@@ -69,6 +67,10 @@ void cargarContacto(vector lista){
 					numero[i]=ingresada;
 					bandera=true;
 				}else{
+<<<<<<< HEAD
+=======
+					
+>>>>>>> ffb632fef8a5970bec306316842769047032023b
 					bandera=false;
 				}
 			}
@@ -81,7 +83,12 @@ void cargarContacto(vector lista){
 	addstr(nombres);
 	move(14,20);
 	addstr(numero);
+<<<<<<< HEAD
 	Contacto nuevo(nombre,numero);		
+=======
+	Contacto nuevo(nombres,numero);	
+		
+>>>>>>> ffb632fef8a5970bec306316842769047032023b
 }
 int menu(){
 	int opcion;

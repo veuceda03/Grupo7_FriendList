@@ -13,10 +13,7 @@ using std::endl;
 
 int menu();
 
-
 void cargarContacto(vector<Contacto>);
-//void cargarContacto();
-
 int main(int argc,char*argv[]){
 	vector<Contacto> lista;
 	initscr();
@@ -81,7 +78,7 @@ void cargarContacto(vector<Contacto> lista){
 	addstr(nombres);
 	move(14,20);
 	addstr(numero);
-	Contacto nuevo(nombre,numero);		
+	Contacto nuevo(nombres,numero);	
 }
 int menu(){
 	int opcion;

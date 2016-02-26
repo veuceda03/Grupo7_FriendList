@@ -1,18 +1,14 @@
 #ifndef CONTACTO_H
 #define CONTACTO_H
-#include <cstring>
-
-using std::string;
-
 
 class Contacto{
 
-	string nombre;
+	char* nombre;
 	char* numero;
 	
 	public:
-		Contacto(string, char*);
-		void setNombre(string nombre);
+		Contacto(char*, char*);
+		void setNombre(char* nombre);
 		void setNumero(char* numero);
 		string getNombre();
 		char* getNumero();
