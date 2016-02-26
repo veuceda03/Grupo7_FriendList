@@ -14,13 +14,14 @@ using std::endl;
 int menu();
 
 
-void cargarContacto(vector);
+void cargarContacto(vector<Contacto>);
 //void cargarContacto();
 
 int main(int argc,char*argv[]){
 	vector<Contacto> lista;
 	initscr();
-	cargarContacto();
+	int opcion=menu();	
+	cargarContacto(lista);
 	
 	getch();
 	endwin();
@@ -80,8 +81,7 @@ void cargarContacto(vector lista){
 	addstr(nombres);
 	move(14,20);
 	addstr(numero);
-	
-	Contacto nuevo=();		
+	Contacto nuevo(nombre,numero);		
 }
 int menu(){
 	int opcion;
