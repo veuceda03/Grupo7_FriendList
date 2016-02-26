@@ -17,9 +17,15 @@ void cargarContacto(vector<Contacto>);
 int main(int argc,char*argv[]){
 	vector<Contacto> lista;
 	initscr();
+	move(10,20); 
 	int opcion=menu();	
-	cargarContacto(lista);
-	
+    if(opcion==49){
+        cargarContacto(lista);
+    }else if(opcion==50){
+
+    }else{
+
+    }
 	getch();
 	endwin();
 	return 0;
@@ -78,12 +84,26 @@ void cargarContacto(vector<Contacto> lista){
 	addstr(nombres);
 	move(14,20);
 	addstr(numero);
-	Contacto nuevo(nombres,numero);	
+	Contacto nuevo(nombres,numero);
+	lista.push_back(nuevo);	
+	move(15,20);
+	addstr("Agregado");
 }
 int menu(){
 	int opcion;
-	cout<<".-*.-*.-MENU-.*.-*."<<endl;
-	cout<<"1.-) Agregar Contacto\n2.)Listar Contacto\n3.)Salir\n";
-	cin>>opcion;
+	addstr(".-*.-*.-MENU-.*.-*.");
+	addstr("1.-) Agregar Contacto\n2.) Listar Contacto\n3.)Salir\n");
+	for(int i=0;i<9;i++){
+		do{
+			char ingresada=getch();
+			if(ingresada==49 || ingresada==50 || ingresada==51){
+				opcion=ingresada;
+				bandera=true;
+			}else{
+				bandera=false;
+			}
+		}while(bandera==false);
+	}
+	
 	return opcion;
 }
