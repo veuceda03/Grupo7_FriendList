@@ -17,7 +17,8 @@ int main(int argc,char*argv[]){
 	vector<Contacto> lista;
 	initscr();
 	cargarContacto(lista);
-	
+	int deletln(void);
+	int wdeleteln(WINDOW *win);
 	getch();
 	endwin();
 	return 0;
