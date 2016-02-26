@@ -1,22 +1,24 @@
 #include <ncurses.h>
 #include <vector>
+#include "contacto.h"
 #include <string>
+#include <iostream>
 
 using std::string;
 using std::vector;
 
 using std::cin;
-using std:cout;
+using std::cout;
 using std::endl;
 
 int menu();
 
 
-//void cargarContacto(vector);
-void cargarContacto();
+void cargarContacto(vector);
+//void cargarContacto();
 
 int main(int argc,char*argv[]){
-	//vector<Contacto> lista;
+	vector<Contacto> lista;
 	initscr();
 	cargarContacto();
 	
@@ -26,28 +28,61 @@ int main(int argc,char*argv[]){
 }
 
 
-void cargarContacto(){//vector lista){
+void cargarContacto(vector lista){
 	char nombres[10];
+	char numero[10];
 	bool bandera=false;
 	move(10,20); 
-	addstr("Ingresando contacto");
+	addstr("Ingresando contacto, solo son aceptadas 9 minúsculas ");
 	refresh();
 	move(11,20);
 	addstr("Nombre: ");
 	for(int i=0;i<9;i++){
 		do{
 			char ingresada=getch();
-			if(ingresada>=){
-
+			if(ingresada>=97 && ingresada<=122){
+				nombres[i]=ingresada;
+				bandera=true;
+			}else{
+				bandera=false;
 			}
 		}while(bandera==false);
 		
 	}
 	nombres[9]='\0';
 	refresh();
+	move(12,20);
+	addstr("Número: ");
+	for(int i=0;i<9;i++){
+		do{
+			char ingresada=getch();
+			if(i==4){
+				if(ingresada==45){
+					numero[i]=ingresada;
+					bandera=true;
+				}else{
+					bandera=false;
+				}
+			}else{
+				if(ingresada>=48 && ingresada<=57){
+					numero[i]=ingresada;
+					bandera=true;
+				}else{
+					move(12);
+					bandera=false;
+				}
+			}
+		}while(bandera==false);
+		
+	}
+	numero[9]='\0';
+	refresh();
 	move(13,20);
-	addstr(nombres);		
-
+	addstr(nombres);
+	move(14,20);
+	addstr(numero);
+	Contacto nuevo=(nombre,numero);		
+}
 int menu(){
 	int opcion;
 	cout<<".-*.-*.-MENU-.*.-*."<<endl;
