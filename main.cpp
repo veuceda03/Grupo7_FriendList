@@ -12,10 +12,12 @@ using std::cout;
 using std::endl;
 
 int menu();
+
 void cargarContacto(vector<Contacto>);
 int main(int argc,char*argv[]){
 	vector<Contacto> lista;
 	initscr();
+	int opcion=menu();	
 	cargarContacto(lista);
 	int deletln(void);
 	int wdeleteln(WINDOW *win);
@@ -65,7 +67,6 @@ void cargarContacto(vector<Contacto> lista){
 					numero[i]=ingresada;
 					bandera=true;
 				}else{
-					
 					bandera=false;
 				}
 			}
@@ -79,7 +80,6 @@ void cargarContacto(vector<Contacto> lista){
 	move(14,20);
 	addstr(numero);
 	Contacto nuevo(nombres,numero);	
-		
 }
 int menu(){
 	int opcion;
