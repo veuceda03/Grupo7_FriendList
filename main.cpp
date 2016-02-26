@@ -5,6 +5,13 @@
 using std::string;
 using std::vector;
 
+using std::cin;
+using std:cout;
+using std::endl;
+
+int menu();
+
+
 //void cargarContacto(vector);
 void cargarContacto();
 
@@ -40,4 +47,11 @@ void cargarContacto(){//vector lista){
 	refresh();
 	move(13,20);
 	addstr(nombres);		
+
+int menu(){
+	int opcion;
+	cout<<".-*.-*.-MENU-.*.-*."<<endl;
+	cout<<"1.-) Agregar Contacto\n2.)Listar Contacto\n3.)Salir\n";
+	cin>>opcion;
+	return opcion;
 }

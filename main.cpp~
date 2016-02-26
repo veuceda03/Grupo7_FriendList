@@ -2,8 +2,16 @@
 #include <vector>
 #include <string>
 
+<<<<<<< HEAD
 using std::string;
 using std::vector;
+=======
+using std::cin;
+using std:cout;
+using std::endl;
+
+int menu();
+>>>>>>> 9660a21e50e031d5dd53d9bdf6913ae6a4abcebc
 
 //void cargarContacto(vector);
 void cargarContacto();
@@ -18,6 +26,7 @@ int main(int argc,char*argv[]){
 	return 0;
 }
 
+<<<<<<< HEAD
 
 void cargarContacto(){//vector lista){
 	char nombres[10];
@@ -30,7 +39,7 @@ void cargarContacto(){//vector lista){
 	for(int i=0;i<9;i++){
 		do{
 			char ingresada=getch();
-			if(){
+			if(ingresada>=){
 
 			}
 		}while(bandera==false);
@@ -40,4 +49,12 @@ void cargarContacto(){//vector lista){
 	refresh();
 	move(13,20);
 	addstr(nombres);		
+=======
+int menu(){
+	int opcion;
+	cout<<".-*.-*.-MENU-.*.-*."<<endl;
+	cout<<"1.-) Agregar Contacto\n2.)Listar Contacto\n3.)Salir\n";
+	cin>>opcion;
+	return opcion;
+>>>>>>> 9660a21e50e031d5dd53d9bdf6913ae6a4abcebc
 }
