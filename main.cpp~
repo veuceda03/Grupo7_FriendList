@@ -68,7 +68,6 @@ void cargarContacto(vector lista){
 					numero[i]=ingresada;
 					bandera=true;
 				}else{
-					move(12);
 					bandera=false;
 				}
 			}
@@ -81,7 +80,8 @@ void cargarContacto(vector lista){
 	addstr(nombres);
 	move(14,20);
 	addstr(numero);
-	Contacto nuevo=(nombre,numero);		
+	
+	Contacto nuevo=();		
 }
 int menu(){
 	int opcion;
