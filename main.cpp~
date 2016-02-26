@@ -30,7 +30,7 @@ void cargarContacto(){//vector lista){
 	for(int i=0;i<9;i++){
 		do{
 			char ingresada=getch();
-			if(ingresada>=){
+			if(){
 
 			}
 		}while(bandera==false);
