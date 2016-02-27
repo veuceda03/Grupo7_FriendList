@@ -1,11 +1,12 @@
 #include <ncurses.h>
 #include <vector>
 #include "contacto.h"
-#include <string>
+#include <cstring>
 #include <iostream>
 
 using std::string;
 using std::vector;
+using std::strcpy;
 using std::cin;
 using std::cout;
 using std::endl;
@@ -14,25 +15,37 @@ int menu();
 void cargarContacto(vector<Contacto>);
 void ordenar(vector<Contacto>, vector<Contacto>, int);
 void imprimir(vector<Contacto>);
+void escribir(vector<Contacto>);
+void cargarContacto(vector<Contacto>);
+
 
 int main(int argc,char*argv[]){
 	vector<Contacto> lista;
 	vector<Contacto> lista2;
+    int opcion;
 	initscr();
-	move(10,20); 
-	int opcion=menu();	
-	clear();
-    if(opcion==49){
-        cargarContacto(lista);
-	cargarContacto(lista2);
-    }else if(opcion==50){
-	ordenar(lista,lista2,0);
-	imprimir(lista);
-    }else{
-	
-    }
+    bool ejecutando=true;  
+    do{
+        move(0,20); 
+	    opcion=menu();	
+        refresh();
+        clear();
+        refresh();
+        if(opcion==49){
+            cargarContacto(lista);
+		ordenar(lista,lista2,0);
+            refresh();
+        }else if(opcion==50){
+            clear();         
+            escribir(lista);
+            refresh();
+        }else{
+            ejecutando=false;
+        }
+    }while(ejecutando==true);
 	getch();
 	endwin();
+    cout<<opcion;
 	return 0;
 }
 
@@ -54,16 +67,22 @@ void cargarContacto(vector<Contacto> lista){
 	attron(COLOR_PAIR(2));
 	addstr("Nombre: ");
 	for(int i=0;i<9;i++){
-		do{
-			char ingresada=getch();
-			if(ingresada>=97 && ingresada<=122){
-				nombres[i]=ingresada;
-				bandera=true;
-			}else{
-				bandera=false;
-			}
+		do{ 
+            noecho();
+			char ingresada;
+            if((ingresada=getch())!='\n'){
+                if(ingresada>=97 && ingresada<=122){
+				    echo();
+                    addch(ingresada);                    
+                    nombres[i]=ingresada;
+				    bandera=true;
+			    }else{
+                    noecho();
+				    bandera=false;
+			    }
+            }
+			
 		}while(bandera==false);
-		
 	}
 	nombres[9]='\0';
 	refresh();
@@ -72,22 +91,29 @@ void cargarContacto(vector<Contacto> lista){
 	addstr("Número: ");
 	for(int i=0;i<9;i++){
 		do{
-			char ingresada=getch();
-			if(i==4){
-				if(ingresada==45){
-					numero[i]=ingresada;
-					bandera=true;
-				}else{
-					bandera=false;
-				}
-			}else{
-				if(ingresada>=48 && ingresada<=57){
-					numero[i]=ingresada;
-					bandera=true;
-				}else{
-					bandera=false;
-				}
-			}
+            noecho();
+			char ingresada;
+            if((ingresada=getch())!='\n'){
+                if(i==4){
+				    if(ingresada==45){
+                        addch(ingresada); 
+					    numero[i]=ingresada;
+					    bandera=true;
+				    }else{
+					    bandera=false;
+				    }
+			    }else{
+				    if(ingresada>=48 && ingresada<=57){
+                        addch(ingresada); 					    
+                        numero[i]=ingresada;
+					    bandera=true;
+				    }else{
+					    bandera=false;
+				    }
+			    }
+
+            }
+			
 		}while(bandera==false);
 		
 	}
@@ -119,7 +145,20 @@ void cargarContacto(vector<Contacto> lista){
 	move(17,20);
 	attron(COLOR_PAIR(5));
 	addstr("Agregado");
+    	move(14,20);
+   	addstr("Su nuevo contacto es: ");
+	move(15,20);
+	addstr(nombres);
+	move(16,20);
+	addstr(numero);
+	move(17,20);
+	addstr(amistad);
+	//Contacto nuevo(nombres,numero);
+	lista.push_back(nuevo);
+    	getch();
+    	clear();
 }
+
 int menu(){
 	int opcion;
 	bool bandera=false;
@@ -202,3 +241,20 @@ void imprimir(vector<Contacto> lista){
 }
 
 
+void escribir(vector<Contacto> lista){
+    refresh();
+    clear();
+    move(1,20);
+    addstr("Nombre\t   Número");
+    int x=2,y=20;
+	move(x,y);
+	for(int i=0;i<lista.size();i++){
+		mvprintw(x,y,lista[i].getNombre());
+		x++;
+		y++;
+		mvprintw(x,y,lista[i].getNumero());
+	}
+
+    getch();
+    clear();
+}

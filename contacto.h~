@@ -7,14 +7,26 @@ class Contacto{
 	char* numero;
 	char* amistad;
 	
+<<<<<<< HEAD
 	public:
 		Contacto(char*, char*, char*);
+=======
+	public:		
+		Contacto(char*, char*);
+		Contacto();
+>>>>>>> e7e522e9bd01c2de4678b0e6a3276e2f21902874
 		void setNombre(char* nombre);
 		void setNumero(char* numero);
 		void setAmistad(char* amistad);		
 		char* getNombre();
 		char* getNumero();
+<<<<<<< HEAD
 		char* getAmistad();								
+=======
+		void imprimirNumero();
+		void imprimirNombre();
+								
+>>>>>>> e7e522e9bd01c2de4678b0e6a3276e2f21902874
 };
 
 #endif
