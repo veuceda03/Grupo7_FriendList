@@ -7,10 +7,12 @@ class Contacto{
 	char* numero;
 	
 	public:
+		Contacto();
+		//		
 		Contacto(char*, char*);
 		void setNombre(char* nombre);
 		void setNumero(char* numero);
-		string getNombre();
+		char* getNombre();
 		char* getNumero();
 								
 };

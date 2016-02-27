@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstring>
 
+
 Contacto::Contacto(char* nombre, char* numero){
 	this->nombre=nombre;
 	this->numero= numero;
@@ -22,5 +23,3 @@ char* Contacto::getNombre(){
 char* Contacto::getNumero(){
 	return numero;
 }
-
-

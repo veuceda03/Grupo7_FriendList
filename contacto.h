@@ -6,7 +6,7 @@ class Contacto{
 	char* nombre;
 	char* numero;
 	
-	public:
+	public:		
 		Contacto(char*, char*);
 		void setNombre(char* nombre);
 		void setNumero(char* numero);
