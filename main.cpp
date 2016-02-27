@@ -13,18 +13,21 @@ using std::endl;
 int menu();
 void cargarContacto(vector<Contacto>);
 void ordenar(vector<Contacto>, vector<Contacto>, int);
+void imprimir(vector<Contacto>);
 
 int main(int argc,char*argv[]){
 	vector<Contacto> lista;
+	vector<Contacto> lista2;
 	initscr();
 	move(10,20); 
 	int opcion=menu();	
-	cargarContacto(lista);
 	clear();
     if(opcion==49){
         cargarContacto(lista);
+	cargarContacto(lista2);
     }else if(opcion==50){
-	
+	ordenar(lista,lista2,0);
+	imprimir(lista);
     }else{
 	
     }
@@ -38,6 +41,8 @@ void cargarContacto(vector<Contacto> lista){
 	init_pair(1,COLOR_GREEN,COLOR_BLACK);
 	init_pair(2,COLOR_YELLOW,COLOR_BLACK);
 	init_pair(3,COLOR_BLUE,COLOR_BLACK);
+	init_pair(4,COLOR_MAGENTA,COLOR_BLACK);
+	init_pair(5,COLOR_WHITE,COLOR_BLACK);
 	char nombres[10];
 	char numero[10];
 	bool bandera=false;
@@ -90,6 +95,7 @@ void cargarContacto(vector<Contacto> lista){
 	refresh();
 	move(13,20);
 	char amistad[2];
+	attron(COLOR_PAIR(4));
 	addstr("Ingresar Nivel de Amistad: ");
 	do{
 		char ingresada=getch();
@@ -111,6 +117,7 @@ void cargarContacto(vector<Contacto> lista){
 	Contacto nuevo(nombres,numero,amistad);
 	lista.push_back(nuevo);	
 	move(17,20);
+	attron(COLOR_PAIR(5));
 	addstr("Agregado");
 }
 int menu(){
@@ -156,4 +163,42 @@ void ordenar(vector<Contacto> lista, vector<Contacto> lista2, int a){
 		ordenar(lista, lista2, a+1);
 	}
 }
+
+void imprimir(vector<Contacto> lista){
+	init_pair(1,COLOR_WHITE,COLOR_BLACK);//el mas aburrido
+	init_pair(2,COLOR_YELLOW,COLOR_BLACK);//2do mas aburrido
+	init_pair(3,COLOR_BLUE,COLOR_BLACK);//3ro mas aburrido
+	init_pair(4,COLOR_GREEN,COLOR_BLACK);//2do mejor
+	init_pair(5,COLOR_RED,COLOR_BLACK);//el mejoooor
+	/*for(int i=0; i<lista.size(); i++){	
+		if(lista.at(i).getAmistad()==49){
+			attron(COLOR_PAIR(1));
+			addstr(lista.at(i).getNombre());
+			addstr('\t');
+			addstr(lista.at(i).getNumero());
+		else if(lista.at(i).getAmistad()==50){
+			attron(COLOR_PAIR(2));
+			addstr(lista.at(i).getNombre());
+			addstr('\t');
+			addstr(lista.at(i).getNumero());
+		}else if(lista.at(i).getAmistad()==51){
+			attron(COLOR_PAIR(3);
+			addstr(lista.at(i).getNombre());
+			addstr('\t');
+			addstr(lista.at(i).getNumero());
+		}else if(lista.at(i).getAmistad()==52){
+			attron(COLOR_PAIR(4));
+			addstr(lista.at(i).getNombre());
+			addstr('\t');
+			addstr(lista.at(i).getNumero());
+		}else{
+			attron(COLOR_PAIR(5));
+			addstr(lista.at(i).getNombre());
+			addstr('\t');
+			addstr(lista.at(i).getNumero());
+		}	
+	}*/
+	return;
+}
+
 
