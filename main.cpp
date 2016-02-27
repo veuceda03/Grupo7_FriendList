@@ -1,12 +1,12 @@
 #include <ncurses.h>
 #include <vector>
 #include "contacto.h"
-#include <string>
+#include <cstring>
 #include <iostream>
 
 using std::string;
 using std::vector;
-
+using std::strcpy;
 using std::cin;
 using std::cout;
 using std::endl;
@@ -28,7 +28,6 @@ int main(int argc,char*argv[]){
         refresh();
         if(opcion==49){
             cargarContacto(lista);
-            //clear();
             refresh();
         }else if(opcion==50){
             clear();         
@@ -140,24 +139,16 @@ void escribir(vector<Contacto> lista){
     clear();
     move(1,20);
     addstr("Nombre\t   Número");
-    move(2,20);
-    addch(sizeof(lista));  
     int x=2,y=20;
-    for(int i=0;i<lista.size();i++){
-        Contacto temp=lista[i];
-        char* numero=temp.getNumero();
-        char* nombre=temp.getNombre();
-        move(x,y);
-        x++;
-        y++;
-        for(int j=0;j<9;j++){
-            addch(nombre[j]);
-        }     
-        addstr("\t");
-        for(int j=0;j<9;j++){
-            addch(numero[j]);
-        }   
-    }
+	move(x,y);
+	for(int i=0;i<lista.size();i++){
+		mvprintw(x,y,lista[i].getNombre());
+		x++;
+		y++;
+		mvprintw(x,y,lista[i].getNumero());
+	}
+
+//
     getch();
     clear();
 }

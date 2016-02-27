@@ -8,10 +8,13 @@ class Contacto{
 	
 	public:		
 		Contacto(char*, char*);
+		Contacto();
 		void setNombre(char* nombre);
 		void setNumero(char* numero);
 		char* getNombre();
 		char* getNumero();
+		void imprimirNumero();
+		void imprimirNombre();
 								
 };
 

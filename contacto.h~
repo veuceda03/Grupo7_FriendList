@@ -6,14 +6,15 @@ class Contacto{
 	char* nombre;
 	char* numero;
 	
-	public:
-		Contacto();
-		//		
+	public:		
 		Contacto(char*, char*);
+		Contacto::Contacto();
 		void setNombre(char* nombre);
 		void setNumero(char* numero);
 		char* getNombre();
 		char* getNumero();
+		void imprimirNumero();
+		void imprimirNombre();
 								
 };
 
